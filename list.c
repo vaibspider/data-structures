@@ -125,3 +125,41 @@ int llremove(list *l, int index) {
 		return INVALID_LIST;
 	}
 }
+
+list *llreverse(list *l) {
+	if(l != NULL) {
+		if(l->head != NULL && l->tail != NULL) {
+			node *p, *q, *r;
+			p = l->head;
+			q = p->next;
+			if(q != NULL) {
+				r = q->next;
+				while(r != NULL) {
+					q->next = p;
+					p = q;
+					q = r;
+					r = r->next;
+				}
+				q->next = p;
+				p = q;
+				q = r;//here q will surely be null
+				
+				node *tmp;
+				l->head->next = NULL;
+				tmp = l->head;
+				l->head = l->tail;
+				l->tail = tmp;
+				return l;
+			}
+			else {
+				return l;
+			}
+		}
+		else {
+			return NULL;
+		}
+	}
+	else {
+		return NULL;
+	}
+}
