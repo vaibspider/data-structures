@@ -18,7 +18,7 @@ typedef struct linked_list {
 void llinit(list *l);
 int llempty(list *l);
 int llfull(list *l);
-void llinsert(list *l, int index, char *str);
+int llinsert(list *l, int index, char *str);
 char *llremove(list *l, int index, char *str);
 void llappend(list *l, char *str);
 list *llreverse(list *l);

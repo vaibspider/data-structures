@@ -12,7 +12,7 @@ void llinit(list *l) {
 	l->len = 0;
 }
 
-void llinsert(list *l, int index, char *str) {
+int llinsert(list *l, int index, char *str) {
 	if(l != NULL) {
 		if(index >= 0 && index <= l->len) {
 			node *new = llcreateNode();
