@@ -62,9 +62,58 @@ int llinsert(list *l, int index, char *str) {
 					l->tail = new;
 				}
 				l->len++;
+				return 0;
 			}
 			else {
 				free(new);
+				return INCONSISTENT_LIST;
+			}
+		}
+		else {
+			return INVALID_INDEX;
+		}
+	}
+	else {
+		return INVALID_LIST;
+	}
+}
+
+int llappend(list *l, char *str) {
+	ret = llinsert(l, l->len, str);// ret: return
+	return ret
+}
+
+int llremove(list *l, int index) {
+	if(l != NULL) {
+		if(index >= 0 && index <= l->len) {
+			if((l->head != NULL && l->tail != NULL) || (l->head == NULL && l->tail == NULL && l->len == 0)) {
+				if(index == 0) {
+					node *p = l->head;
+					l->head = p->next;
+					p->next = NULL;
+					free(p);
+				}
+				else if(index < l->len) {
+					for(int i = 0; i < index - 1; i++) {
+						p = p->next;
+					}
+					node *q = p->next;
+					p->next = q->next;
+					q->next = NULL;
+					free(q);
+				}
+				else { /*same as 'index == l->len'*/
+					while(p->next != l->tail) {
+						p = p->next;
+					}
+					p->next = NULL;
+					free(l->tail);
+					l->tail = p;
+				}
+				l->len--;
+				return 0;
+			}
+			else {
 				return INCONSISTENT_LIST;
 			}
 		}

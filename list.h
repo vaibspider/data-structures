@@ -20,6 +20,6 @@ void llinit(list *l);
 int llempty(list *l);
 int llfull(list *l);
 int llinsert(list *l, int index, char *str);
-char *llremove(list *l, int index, char *str);
-void llappend(list *l, char *str);
+int llappend(list *l, char *str);
+int llremove(list *l, int index);
 list *llreverse(list *l);
