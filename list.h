@@ -1,5 +1,10 @@
 #define MAX 16
 
+#define INVALID_LIST 1
+#define INVALID_INDEX 2
+#define INCONSISTENT_LIST 3
+#define NULL_STRING 4
+
 typedef struct node {
 	char str[MAX];
 	struct node *next;
