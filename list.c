@@ -3,6 +3,9 @@
 node *llcreateNode(void) { // This is a private function that should be accessible only through linked list methods. In C++, it is supported.
 	node *new;
 	new = (node *) malloc(sizeof(node));
+	if(new == NULL) {
+		return NULL;
+	}
 	new->next = NULL;
 	return new;
 }
@@ -12,10 +15,27 @@ void llinit(list *l) {
 	l->len = 0;
 }
 
+int llempty(list *l) {
+	if(l->len == 0) {
+		return 1;
+	}
+	return 0;
+}
+
+int llfull(list *l) {
+	if(malloc(sizeof(node)) == NULL) {
+		return 1;
+	}
+	return 0;
+}
+
 int llinsert(list *l, int index, char *str) {
 	if(l != NULL) {
 		if(index >= 0 && index <= l->len) {
 			node *new = llcreateNode();
+			if(new == NULL) {
+				return MALLOC_ERROR;
+			}
 			if(str != NULL) {
 				strcpy(new->str, str);
 			}

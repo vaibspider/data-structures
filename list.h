@@ -4,6 +4,7 @@
 #define INVALID_INDEX 2
 #define INCONSISTENT_LIST 3
 #define NULL_STRING 4
+#define MALLOC_ERROR 5
 
 typedef struct node {
 	char str[MAX];
