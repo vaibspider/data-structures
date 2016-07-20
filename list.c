@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <string.h>
 #include "list.h"
 
 node *llcreateNode(void) { // This is a private function that should be accessible only through linked list methods. In C++, it is supported.
@@ -79,8 +81,8 @@ int llinsert(list *l, int index, char *str) {
 }
 
 int llappend(list *l, char *str) {
-	ret = llinsert(l, l->len, str);// ret: return
-	return ret
+	int ret = llinsert(l, l->len, str);// ret: return
+	return ret;
 }
 
 int llremove(list *l, int index) {
@@ -94,6 +96,7 @@ int llremove(list *l, int index) {
 					free(p);
 				}
 				else if(index < l->len) {
+					node *p;
 					for(int i = 0; i < index - 1; i++) {
 						p = p->next;
 					}
@@ -103,6 +106,7 @@ int llremove(list *l, int index) {
 					free(q);
 				}
 				else { /*same as 'index == l->len'*/
+					node *p;
 					while(p->next != l->tail) {
 						p = p->next;
 					}
