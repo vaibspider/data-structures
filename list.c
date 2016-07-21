@@ -103,7 +103,7 @@ int llremove(list *l, int index) {
 					free(p);
 				}
 				else if(index < l->len - 1) {
-					node *p;
+					node *p = l->head;
 					for(int i = 0; i < index - 1; i++) {
 						p = p->next;
 					}
@@ -113,7 +113,7 @@ int llremove(list *l, int index) {
 					free(q);
 				}
 				else { /*same as 'index == l->len - 1'*/
-					node *p;
+					node *p = l->head;
 					while(p->next != l->tail) {
 						p = p->next;
 					}
