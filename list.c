@@ -26,7 +26,7 @@ int llisempty(list *l) {
 }
 
 int llisfull(list *l) {
-	if(malloc(sizeof(node)) == NULL) {
+	if(malloc(sizeof(node))) {
 		return FALSE;
 	}
 	return TRUE;
@@ -131,7 +131,7 @@ int llremove(list *l, int index) {
 	}
 }
 
-list *llreverse(list *l) {
+int llreverse(list *l) {
 	if(l != NULL) {
 		if(l->head != NULL && l->tail != NULL) {
 			node *p, *q, *r;
@@ -154,18 +154,18 @@ list *llreverse(list *l) {
 				tmp = l->head;
 				l->head = l->tail;
 				l->tail = tmp;
-				return l;
+				return SUCCESS;
 			}
 			else {
-				return l;
+				return SUCCESS;
 			}
 		}
 		else {
-			return NULL;
+			return EMPTY_LIST;
 		}
 	}
 	else {
-		return NULL;
+		return INVALID_LIST;
 	}
 }
 

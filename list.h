@@ -26,5 +26,5 @@ int llisfull(list *l);
 int llinsert(list *l, int index, char *str);
 int llappend(list *l, char *str);
 int llremove(list *l, int index);
-list *llreverse(list *l);
+int llreverse(list *l);
 int llprint(list *l);
