@@ -1,8 +1,12 @@
 #include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define ON 1
+#define OFF 0
+
 /* What is the best way to get the input from a user for this linked list program?*/
 /* How to use function name other than main() as an entry point into this program?*/
+
 int main(int argc, char **argv) {
 	list *l;
 	l = (list *) malloc(sizeof(list));
@@ -10,7 +14,7 @@ int main(int argc, char **argv) {
 		printf("list malloc error!");
 		return 1;
 	}
-	int input, ret, status, index;
+	int input, ret, status, index, debug = ON;/*Default: debug is 'OFF'. If you want to debug, set it to 'ON'. */
 	char str[MAX];
 	llinit(l);
 	do {
@@ -29,6 +33,9 @@ int main(int argc, char **argv) {
 					scanf("%s", str);
 					ret = llinsert(l, index, str);
 					status = llprint(l);
+					if(debug == ON) {
+						printf("\nret = %2$d, status = %1$d\n", status, ret);
+					}
 				}
 				else {
 					printf("\nThe list is full!\n");
@@ -40,6 +47,9 @@ int main(int argc, char **argv) {
 					scanf("%s", str);
 					ret = llappend(l, str);
 					status = llprint(l);
+					if(debug == ON) {
+						printf("\nret = %2$d, status = %1$d\n", status, ret);
+					}
 				}
 				else {
 					printf("\nThe list is full!\n");
@@ -51,6 +61,9 @@ int main(int argc, char **argv) {
 					scanf("%d", &index);
 					ret = llremove(l, index);
 					status = llprint(l);
+					if(debug == ON) {
+						printf("\nret = %2$d, status = %1$d\n", status, ret);
+					}
 				}
 				else {
 					printf("\nThe list is already empty!\n");
@@ -59,6 +72,9 @@ int main(int argc, char **argv) {
 			case 4:
 				ret = llreverse(l);
 				status = llprint(l);
+				if(debug == ON) {
+					printf("\nret = %2$d, status = %1$d\n", status, ret);
+				}
 				break;
 			case 5:
 				return 0;

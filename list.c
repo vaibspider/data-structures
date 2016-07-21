@@ -50,6 +50,9 @@ int llinsert(list *l, int index, char *str) {
 				if(index == 0) {
 					new->next = l->head;
 					l->head = new;
+					if(l->tail == NULL) {
+						l->tail = new;
+					}
 				}
 				else if(index < l->len){
 					int i;
@@ -88,15 +91,18 @@ int llappend(list *l, char *str) {
 
 int llremove(list *l, int index) {
 	if(l != NULL) {
-		if(index >= 0 && index <= l->len) {
-			if((l->head != NULL && l->tail != NULL) || (l->head == NULL && l->tail == NULL && l->len == 0)) {
+		if(index >= 0 && index < l->len) {
+			if(l->head != NULL && l->tail != NULL) {
 				if(index == 0) {
 					node *p = l->head;
 					l->head = p->next;
 					p->next = NULL;
+					if(l->head == NULL) {
+						l->tail = NULL;
+					}
 					free(p);
 				}
-				else if(index < l->len) {
+				else if(index < l->len - 1) {
 					node *p;
 					for(int i = 0; i < index - 1; i++) {
 						p = p->next;
@@ -106,7 +112,7 @@ int llremove(list *l, int index) {
 					q->next = NULL;
 					free(q);
 				}
-				else { /*same as 'index == l->len'*/
+				else { /*same as 'index == l->len - 1'*/
 					node *p;
 					while(p->next != l->tail) {
 						p = p->next;
@@ -117,6 +123,9 @@ int llremove(list *l, int index) {
 				}
 				l->len--;
 				return SUCCESS;
+			}
+			else if(l->head == NULL && l->tail == NULL && l->len == 0) {
+				return EMPTY_LIST;
 			}
 			else {
 				return INCONSISTENT_LIST;
