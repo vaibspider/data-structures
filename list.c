@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "list.h"
 
 node *llcreateNode(void) { // This is a private function that should be accessible only through linked list methods. In C++, it is supported.
@@ -17,18 +18,18 @@ void llinit(list *l) {
 	l->len = 0;
 }
 
-int llempty(list *l) {
+int llisempty(list *l) {
 	if(l->len == 0) {
-		return 1;
+		return FALSE;
 	}
-	return 0;
+	return TRUE;
 }
 
-int llfull(list *l) {
+int llisfull(list *l) {
 	if(malloc(sizeof(node)) == NULL) {
-		return 1;
+		return FALSE;
 	}
-	return 0;
+	return TRUE;
 }
 
 int llinsert(list *l, int index, char *str) {
@@ -64,7 +65,7 @@ int llinsert(list *l, int index, char *str) {
 					l->tail = new;
 				}
 				l->len++;
-				return 0;
+				return SUCCESS;
 			}
 			else {
 				free(new);
@@ -115,7 +116,7 @@ int llremove(list *l, int index) {
 					l->tail = p;
 				}
 				l->len--;
-				return 0;
+				return SUCCESS;
 			}
 			else {
 				return INCONSISTENT_LIST;
@@ -165,5 +166,27 @@ list *llreverse(list *l) {
 	}
 	else {
 		return NULL;
+	}
+}
+
+int llprint(list *l) {
+	if(l != NULL) {
+		if(l->head != NULL && l->tail != NULL ) {
+			node *p = l->head;
+			while(p != NULL) {
+				printf("[ %s ]\n   |\n", p->str);
+				p = p->next;
+			}
+			return SUCCESS;
+		}
+		else if(l->head == NULL && l->tail == NULL){
+			return EMPTY_LIST;
+		}
+		else {
+			return INCONSISTENT_LIST;
+		}
+	}
+	else {
+		return INVALID_LIST;
 	}
 }
