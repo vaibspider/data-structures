@@ -174,7 +174,10 @@ int llprint(list *l) {
 		if(l->head != NULL && l->tail != NULL ) {
 			node *p = l->head;
 			while(p != NULL) {
-				printf("[ %s ]\n   |\n", p->str);
+				if(p != l->head) {
+					printf("->");
+				}
+				printf("[ %s ]", p->str);
 				p = p->next;
 			}
 			return SUCCESS;
