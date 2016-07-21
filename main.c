@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 		scanf("%d", &input);
 		switch(input) {
 			case 1:
-				if(llisfull(l) == FALSE) {
+				if(llisfull(l) == NO) {
 					printf("\nIndex: ");
 					scanf("%d", &index);
 					printf("String: ");
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 				}
 				break;
 			case 2:
-				if(llisfull(l) == FALSE) {
+				if(llisfull(l) == NO) {
 					printf("String: ");
 					scanf("%s", str);
 					ret = llappend(l, str);
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 				}
 				break;
 			case 3:
-				if(llisempty(l) == FALSE) {
+				if(llisempty(l) == NO) {
 					printf("\nIndex: ");
 					scanf("%d", &index);
 					ret = llremove(l, index);

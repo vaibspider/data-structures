@@ -6,8 +6,8 @@
 #define NULL_STRING 4
 #define MALLOC_ERROR 5
 #define EMPTY_LIST 6
-#define FALSE 1
-#define TRUE 0
+#define YES 1
+#define NO 0
 #define SUCCESS 0
 
 typedef struct node {

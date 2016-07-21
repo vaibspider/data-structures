@@ -20,16 +20,16 @@ void llinit(list *l) {
 
 int llisempty(list *l) {
 	if(l->len == 0) {
-		return FALSE;
+		return YES;
 	}
-	return TRUE;
+	return NO;
 }
 
 int llisfull(list *l) {
-	if(malloc(sizeof(node))) {
-		return FALSE;
+	if(malloc(sizeof(node)) == NULL) {
+		return YES;
 	}
-	return TRUE;
+	return NO;
 }
 
 int llinsert(list *l, int index, char *str) {
