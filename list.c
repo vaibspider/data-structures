@@ -173,7 +173,7 @@ int llprint(list *l) {
 	if(l != NULL) {
 		if(l->head != NULL && l->tail != NULL ) {
 			node *p = l->head;
-			int i = l->len;
+			int i, len = l->len;
 			for(i = 0; i < len; i++) {
 				if(p != l->head) {
 					printf("->");
